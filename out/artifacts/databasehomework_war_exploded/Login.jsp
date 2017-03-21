@@ -36,7 +36,7 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand visible-xs visible-sm" href="LoginHome.jsp"><img src="img/logo.png" alt="Hospital'" width="120"></a>
+                  <a class="navbar-brand visible-xs visible-sm" href="LoginHome.jsp"><img src="img/logo.png" alt="Hospital'" width="30"></a>
               </div>
               <div class="navbar-collapse collapse">
                   <ul class="nav navbar-nav">

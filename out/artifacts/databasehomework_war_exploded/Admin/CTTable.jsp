@@ -39,22 +39,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand visible-xs visible-sm" href="AdminHome.jsp"><img src="img/logo.png" alt="Bootstrappin'" width="120"></a>
+                <a class="navbar-brand visible-xs visible-sm" href="AdminHome.jsp"><img src="../img/logo.png" alt="Hospital" width="30"></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">系统<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>系统</strong><b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="../Admin/registerAdmin.jsp">创建新管理员账户</a></li>
                             <li class="divider"></li>
                             <li><a href="../Admin/register.jsp">创建新收费员账户</a></li>
                             <li class="divider"></li>
-                            <li><a href="../Login.jsp">退出登录</a></li>
+                            <li><a href="../LoginHome.jsp">退出登录</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">管理基础数据<b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>管理基础数据</strong><b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="../Data/Room.jsp">科室数据</a></li>
                             <li class="divider"></li>
@@ -64,7 +64,7 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">生成收费报表 <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>生成收费报表</strong> <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="../Admin/DoctorTable.jsp">生成医生报表</a></li>
                             <li class="divider"></li>
@@ -111,7 +111,7 @@
                 <label for="endTime">结束时间</label>
                 <input type="date" class="form-control" id="endTime" placeholder="2017-01-31" name="end">
             </div>
-            <button type="submit" class="btn btn-default">查询</button>
+            <button type="submit" class="btn btn-default" id="search">查询</button>
         </form>
     </div>
 
@@ -137,11 +137,13 @@
 
     <div class="container">
         <div class="table-responsive">
-            <table class="table table-striped table-bordered"
+            <table class="table table-striped table-bordered" data-toggle="table"
                    data-sort-name="id" data-sort-order="asc"
                    data-pagination="true" data-pagination-loop="true"
                    data-page-size="10" data-page-list="[10,20,30,All]"
                    data-show-pagination-switch="true"
+                   data-show-export="true"
+                   id="table"
             >
                 <thead>
                 <tr>
@@ -209,6 +211,8 @@
 <script src="../js/bootstrapValidator.js"></script>
 <script src="../js/bootstrapValidator.min.js"></script>
 <script src="../js/bootstrap-table.js"></script>
+<script src="../js/bootstrap-table-export.js"></script>
+<script src="../js/tableExport.js"></script>
 <script>
     $('[type="date"]').datepicker({
         format:"yyyy-mm-dd",
@@ -219,7 +223,24 @@
         todayHighlight:false
     });
 </script>
+<script>
+    $(function(){
+        $('#search').click(function(){
+            var starttime = $('#startTime').val();
+            var endtime = $('#endTime').val();
+            if(endtime<starttime){
+                alert("结束时间需晚于开始时间，请检查。");
+                return false;
+            }else{
+                return true;
+            }
+        });
 
+        $('#table').bootstrapTable('destroy').bootstrapTable({
+            exportTypes: ['json', 'csv', 'txt', 'excel']
+        });
+    });
+</script>
 <script>
     $(function (){
         $('form').bootstrapValidator({

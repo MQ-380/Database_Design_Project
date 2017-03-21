@@ -33,7 +33,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand visible-xs visible-sm" href="AdminHome.jsp"><img src="img/logo.png" alt="Bootstrappin'" width="120"></a>
+                <a class="navbar-brand visible-xs visible-sm" href="AdminHome.jsp"><img src="../img/logo.png" alt="Hospital" width="30"></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -44,7 +44,7 @@
                             <li class="divider"></li>
                             <li><a href="../Admin/register.jsp">创建新收费员账户</a></li>
                             <li class="divider"></li>
-                            <li><a href="../Login.jsp">退出登录</a></li>
+                            <li><a href="../LoginHome.jsp">退出登录</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

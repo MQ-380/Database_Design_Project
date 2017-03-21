@@ -48,7 +48,7 @@ public class DeleteDoctorServlet extends HttpServlet {
             }else{
                 HttpSession httpSession = request.getSession();
                 httpSession.setAttribute("log",false);
-                response.sendRedirect("Login.jsp");
+                response.sendRedirect("LoginHome.jsp");
             }
         }catch (Exception e){
             e.printStackTrace();

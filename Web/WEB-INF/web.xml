@@ -24,12 +24,6 @@
         <servlet-class>clinic.login.RegisterAdminServlet</servlet-class>
     </servlet>
 
-    <servlet>
-        <description>Goto Receipt</description>
-        <display-name>Receipt</display-name>
-        <servlet-name>PaysServlet</servlet-name>
-        <servlet-class>clinic.login.PaysServlet</servlet-class>
-    </servlet>
     
     <servlet>
         <servlet-name>ConsultDoctorReceiptServlet</servlet-name>
@@ -213,10 +207,6 @@
         <url-pattern>/RegisterServlet</url-pattern>
     </servlet-mapping>
 
-    <servlet-mapping>
-        <servlet-name>PaysServlet</servlet-name>
-        <url-pattern>/PaysServlet</url-pattern>
-    </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>LoginHome.jsp</welcome-file>
