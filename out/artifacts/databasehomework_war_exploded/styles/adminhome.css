@@ -1,0 +1,31 @@
+header {
+    background-image: linear-gradient(to right,white, #1babff);
+
+}
+
+ul{
+    font-family: "PingFang SC";
+    font-size:2em;
+    list-style-type: circle;
+    padding-left:0;
+    margin-left: 0;
+    width:50%;
+    margin: 10px;
+    font-family: "PingFang SC";
+}
+
+
+.left {
+    float: left;
+
+}
+
+.right {
+    float: right;
+
+}
+
+a{
+    display: block;
+    width: 8em;
+}

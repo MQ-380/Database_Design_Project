@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+    <servlet>
+        <description>Login module</description>
+        <display-name>Login</display-name>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>clinic.login.LoginServlet</servlet-class>
+    </servlet>
+
+
+    <servlet>
+        <description>Register module</description>
+        <display-name>Register</display-name>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>clinic.login.RegisterServlet</servlet-class>
+    </servlet>
+
+
+    <servlet>
+        <servlet-name>RegisterAdminServlet</servlet-name>
+        <servlet-class>clinic.login.RegisterAdminServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <description>Goto Receipt</description>
+        <display-name>Receipt</display-name>
+        <servlet-name>PaysServlet</servlet-name>
+        <servlet-class>clinic.login.PaysServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>ConsultDoctorReceiptServlet</servlet-name>
+        <servlet-class>clinic.login.ConsultDoctorReceiptServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ConsultCTReceiptServlet</servlet-name>
+        <servlet-class>clinic.login.ConsultCTReceiptServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>AddNewDoctorServlet</servlet-name>
+        <servlet-class>clinic.login.AddNewDoctorServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>DeleteDoctorServlet</servlet-name>
+        <servlet-class>clinic.login.DeleteDoctorServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>ConsultDoctorInformationServlet</servlet-name>
+        <servlet-class>clinic.login.ConsultDoctorInformationServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>UpdateDoctorInformationServlet</servlet-name>
+        <servlet-class>clinic.login.UpdateDoctorInformationServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>AddNewItemServlet</servlet-name>
+        <servlet-class>clinic.login.AddNewItemServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>UpdateItemInformationServlet</servlet-name>
+        <servlet-class>clinic.login.UpdateItemInformationServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ConsultItemInformationServlet</servlet-name>
+        <servlet-class>clinic.login.ConsultItemInformationServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>DeleteItemServlet</servlet-name>
+        <servlet-class>clinic.login.DeleteItemServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddNewRoomServlet</servlet-name>
+        <servlet-class>clinic.login.AddNewRoomServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>UpdateRoomInformationServlet</servlet-name>
+        <servlet-class>clinic.login.UpdateRoomInformationServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>DeleteRoomServlet</servlet-name>
+        <servlet-class>clinic.login.DeleteRoomServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>ConsultRoomInformationServlet</servlet-name>
+        <servlet-class>clinic.login.ConsultRoomInformationServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>AddPaysAndReceipts</servlet-name>
+        <servlet-class>clinic.login.AddPaysAndReceipts</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ConsultReceiptServlet</servlet-name>
+        <servlet-class>clinic.login.ConsultReceiptServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>CancelPays</servlet-name>
+        <servlet-class>clinic.login.CancelPays</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CancelPays</servlet-name>
+        <url-pattern>/CancelPays</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ConsultReceiptServlet</servlet-name>
+        <url-pattern>/ConsultReceiptServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddPaysAndReceipts</servlet-name>
+        <url-pattern>/AddPaysAndReceipts</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>RegisterAdminServlet</servlet-name>
+        <url-pattern>/RegisterAdminServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ConsultRoomInformationServlet</servlet-name>
+        <url-pattern>/ConsultRoomInformationServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>DeleteRoomServlet</servlet-name>
+        <url-pattern>/DeleteRoomServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>UpdateRoomInformationServlet</servlet-name>
+        <url-pattern>/UpdateRoomInformationServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>AddNewRoomServlet</servlet-name>
+        <url-pattern>/AddNewRoomServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>DeleteItemServlet</servlet-name>
+        <url-pattern>/DeleteItemServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ConsultItemInformationServlet</servlet-name>
+        <url-pattern>/ConsultItemInformationServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>UpdateItemInformationServlet</servlet-name>
+        <url-pattern>/UpdateItemInformationServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>AddNewItemServlet</servlet-name>
+        <url-pattern>/AddNewItemServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>UpdateDoctorInformationServlet</servlet-name>
+        <url-pattern>/UpdateDoctorInformationServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>ConsultDoctorInformationServlet</servlet-name>
+        <url-pattern>/ConsultDoctorInformationServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DeleteDoctorServlet</servlet-name>
+        <url-pattern>/DeleteDoctorServlet</url-pattern>
+    </servlet-mapping>
+    
+    <servlet-mapping>
+        <servlet-name>AddNewDoctorServlet</servlet-name>
+        <url-pattern>/AddNewDoctorServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultCTReceiptServlet</servlet-name>
+        <url-pattern>/ConsultCTReceiptServlet</url-pattern>
+    </servlet-mapping
+    >
+    <servlet-mapping>
+        <servlet-name>ConsultDoctorReceiptServlet</servlet-name>
+        <url-pattern>/ConsultDoctorReceiptServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/RegisterServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>PaysServlet</servlet-name>
+        <url-pattern>/PaysServlet</url-pattern>
+    </servlet-mapping>
+
+    <welcome-file-list>
+        <welcome-file>LoginHome.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>
+
+
+
