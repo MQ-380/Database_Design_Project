@@ -1,4 +1,4 @@
-<%@ page import="clinic.login.DBConc" %>
+<%@ page import="clinic.DBConc" %>
 <%@ page import="java.util.*" %>
 <%@ page import="JavaBean.DoctorReceipt" %>
 <%@ page import="JavaBean.Doctor" %><%--
@@ -123,7 +123,7 @@
     <div class="form-group">
         <label class="col-xs-3 control-label">用户姓名</label>
         <div class="col-xs-5">
-            <input type="text" class="form-control" name="username" value="1"/>
+            <input type="text" class="form-control" name="username"/>
         </div>
     </div>
 

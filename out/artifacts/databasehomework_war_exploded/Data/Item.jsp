@@ -1,4 +1,4 @@
-<%@ page import="clinic.login.DBConc" %>
+<%@ page import="clinic.DBConc" %>
 <%@ page import="java.util.*" %>
 <%@ page import="JavaBean.CTReceipt" %>
 <%@ page import="JavaBean.Doctor" %>
@@ -30,7 +30,7 @@
 <body>
 <header role="banner">
     <div class="container">
-        <a class="banner-brand visible-md visible-lg" href="AdminHome.jsp"><img src="../img/logo.png" alt="Hospital" width="50" height="50"></a>
+        <a class="banner-brand visible-md visible-lg" href="../Admin/AdminHome.jsp"><img src="../img/logo.png" alt="Hospital" width="50" height="50"></a>
     </div><!-- /.container -->
     <nav role="navigation" class="navbar navbar-default">
         <div class="container">
@@ -40,7 +40,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand visible-xs visible-sm" href="AdminHome.jsp"><img src="../img/logo.png" alt="Hospital" width="30"></a>
+                <a class="navbar-brand visible-xs visible-sm" href="../Admin/AdminHome.jsp"><img src="../img/logo.png" alt="Hospital" width="30"></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -131,7 +131,7 @@
                 <td><button type="button" data-id="<%=item_id%>" class="btn btn-default edit">
                     <span class="glyphicon glyphicon-edit"></span>
                 </button> </td>
-                <td><button type="button" data-id="<%=item_id%>" class="btn btn-default delete">
+                <td><button type="button" data-id="<%=item_id%>" class="btn btn-danger delete">
                     <span class="glyphicon glyphicon-minus"></span>
                 </button> </td>
             </tr>

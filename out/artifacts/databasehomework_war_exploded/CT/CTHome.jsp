@@ -1,4 +1,4 @@
-<%@ page import="clinic.login.DBConc" %>
+<%@ page import="clinic.DBConc" %>
 <%@ page import="java.util.*" %>
 <%@ page import="JavaBean.Item" %>
 <%@ page import="JavaBean.ReceiptAndPays" %>

@@ -7,7 +7,7 @@
         <description>Login module</description>
         <display-name>Login</display-name>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>clinic.login.LoginServlet</servlet-class>
+        <servlet-class>clinic.LoginServlet</servlet-class>
     </servlet>
 
 
@@ -15,99 +15,170 @@
         <description>Register module</description>
         <display-name>Register</display-name>
         <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>clinic.login.RegisterServlet</servlet-class>
+        <servlet-class>clinic.RegisterServlet</servlet-class>
     </servlet>
 
 
     <servlet>
         <servlet-name>RegisterAdminServlet</servlet-name>
-        <servlet-class>clinic.login.RegisterAdminServlet</servlet-class>
+        <servlet-class>clinic.RegisterAdminServlet</servlet-class>
     </servlet>
 
     
     <servlet>
         <servlet-name>ConsultDoctorReceiptServlet</servlet-name>
-        <servlet-class>clinic.login.ConsultDoctorReceiptServlet</servlet-class>
+        <servlet-class>clinic.ConsultDoctorReceiptServlet</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>ConsultCTReceiptServlet</servlet-name>
-        <servlet-class>clinic.login.ConsultCTReceiptServlet</servlet-class>
+        <servlet-class>clinic.ConsultCTReceiptServlet</servlet-class>
     </servlet>
     
     <servlet>
         <servlet-name>AddNewDoctorServlet</servlet-name>
-        <servlet-class>clinic.login.AddNewDoctorServlet</servlet-class>
+        <servlet-class>clinic.AddNewDoctorServlet</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>DeleteDoctorServlet</servlet-name>
-        <servlet-class>clinic.login.DeleteDoctorServlet</servlet-class>
+        <servlet-class>clinic.DeleteDoctorServlet</servlet-class>
     </servlet>
     
     <servlet>
         <servlet-name>ConsultDoctorInformationServlet</servlet-name>
-        <servlet-class>clinic.login.ConsultDoctorInformationServlet</servlet-class>
+        <servlet-class>clinic.ConsultDoctorInformationServlet</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>UpdateDoctorInformationServlet</servlet-name>
-        <servlet-class>clinic.login.UpdateDoctorInformationServlet</servlet-class>
+        <servlet-class>clinic.UpdateDoctorInformationServlet</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>AddNewItemServlet</servlet-name>
-        <servlet-class>clinic.login.AddNewItemServlet</servlet-class>
+        <servlet-class>clinic.AddNewItemServlet</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>UpdateItemInformationServlet</servlet-name>
-        <servlet-class>clinic.login.UpdateItemInformationServlet</servlet-class>
+        <servlet-class>clinic.UpdateItemInformationServlet</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>ConsultItemInformationServlet</servlet-name>
-        <servlet-class>clinic.login.ConsultItemInformationServlet</servlet-class>
+        <servlet-class>clinic.ConsultItemInformationServlet</servlet-class>
     </servlet>
     
     <servlet>
         <servlet-name>DeleteItemServlet</servlet-name>
-        <servlet-class>clinic.login.DeleteItemServlet</servlet-class>
+        <servlet-class>clinic.DeleteItemServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AddNewRoomServlet</servlet-name>
-        <servlet-class>clinic.login.AddNewRoomServlet</servlet-class>
+        <servlet-class>clinic.AddNewRoomServlet</servlet-class>
     </servlet>
     
     <servlet>
         <servlet-name>UpdateRoomInformationServlet</servlet-name>
-        <servlet-class>clinic.login.UpdateRoomInformationServlet</servlet-class>
+        <servlet-class>clinic.UpdateRoomInformationServlet</servlet-class>
     </servlet>
     
     <servlet>
         <servlet-name>DeleteRoomServlet</servlet-name>
-        <servlet-class>clinic.login.DeleteRoomServlet</servlet-class>
+        <servlet-class>clinic.DeleteRoomServlet</servlet-class>
     </servlet>
     
     <servlet>
         <servlet-name>ConsultRoomInformationServlet</servlet-name>
-        <servlet-class>clinic.login.ConsultRoomInformationServlet</servlet-class>
+        <servlet-class>clinic.ConsultRoomInformationServlet</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>AddPaysAndReceipts</servlet-name>
-        <servlet-class>clinic.login.AddPaysAndReceipts</servlet-class>
+        <servlet-class>clinic.AddPaysAndReceipts</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>ConsultReceiptServlet</servlet-name>
-        <servlet-class>clinic.login.ConsultReceiptServlet</servlet-class>
+        <servlet-class>clinic.ConsultReceiptServlet</servlet-class>
     </servlet>
 
     <servlet>
         <servlet-name>CancelPays</servlet-name>
-        <servlet-class>clinic.login.CancelPays</servlet-class>
+        <servlet-class>clinic.CancelPays</servlet-class>
     </servlet>
+    
+    
+    <servlet>
+        <servlet-name>StayLoginServlet</servlet-name>
+        <servlet-class>clinic.StayLoginServlet</servlet-class>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>RegisterResidentServlet</servlet-name>
+        <servlet-class>clinic.RegisterResidentServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>AddNewStayRoomServlet</servlet-name>
+        <servlet-class>clinic.AddNewStayRoomServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>UpdateStayRoomServlet</servlet-name>
+        <servlet-class>clinic.UpdateStayRoomServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>DeleteStayRoomServlet</servlet-name>
+        <servlet-class>clinic.DeleteStayRoomServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ConsultDoctorInpatientServlet</servlet-name>
+        <servlet-class>clinic.ConsultDoctorInpatientServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ConsultRoomInpatientServlet</servlet-name>
+        <servlet-class>clinic.ConsultRoomInpatientServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ConsultRoomInpatientServlet</servlet-name>
+        <url-pattern>/ConsultRoomInpatientServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ConsultDoctorInpatientServlet</servlet-name>
+        <url-pattern>/ConsultDoctorInpatientServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>DeleteStayRoomServlet</servlet-name>
+        <url-pattern>/DeleteStayRoomServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>UpdateStayRoomServlet</servlet-name>
+        <url-pattern>/UpdateStayRoomServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>AddNewStayRoomServlet</servlet-name>
+        <url-pattern>/AddNewStayRoomServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>RegisterResidentServlet</servlet-name>
+        <url-pattern>/RegisterResidentServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>StayLoginServlet</servlet-name>
+        <url-pattern>/StayLoginServlet</url-pattern>
+    </servlet-mapping>
 
     <servlet-mapping>
         <servlet-name>CancelPays</servlet-name>

@@ -1,4 +1,4 @@
-<%@ page import="clinic.login.DBConc" %>
+<%@ page import="clinic.DBConc" %>
 <%@ page import="sun.util.resources.cldr.bo.CalendarData_bo_CN" %><%--
   Created by IntelliJ IDEA.
   User: mouizumi
