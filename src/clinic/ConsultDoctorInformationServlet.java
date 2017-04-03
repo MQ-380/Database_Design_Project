@@ -14,7 +14,7 @@ import com.google.gson.Gson;
 public class ConsultDoctorInformationServlet extends HttpServlet{
     public ConsultDoctorInformationServlet(){super();}
 
-    public void destory(){super.destroy();}
+    public void destroy(){super.destroy();}
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
         doPost(request,response);

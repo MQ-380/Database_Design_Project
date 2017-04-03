@@ -78,6 +78,15 @@
         </div><!--/.container -->
     </nav>
 </header>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>门诊管理子系统   管理员账户</h1>
+        <p>本部分可以进行管理员注册，收费员注册，收费情况列表生成等功能。</p>
+        <p>具体功能见上方导航栏。</p>
+    </div>
+</div>
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 

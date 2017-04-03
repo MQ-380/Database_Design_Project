@@ -4,8 +4,8 @@ package JavaBean;
  * Created by mouizumi on 2017/3/14.
  */
 public class Room {
-    int room_id;
-    String room_name;
+    private int room_id;
+    private String room_name;
 
     public Room(int room_id, String room_name) {
         this.room_id = room_id;

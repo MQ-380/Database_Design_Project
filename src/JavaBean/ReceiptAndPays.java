@@ -4,15 +4,15 @@ package JavaBean;
  * Created by mouizumi on 2017/3/19.
  */
 public class ReceiptAndPays {
-    int pays_id;
-    String receipt_Date;
-    double total;
-    int item_id;
-    int doctor_id;
-    int ct_id;
-    int receipt_id;
-    int amount;
-    String receipt_name;
+    private int pays_id;
+    private String receipt_Date;
+    private double total;
+    private int item_id;
+    private int doctor_id;
+    private int ct_id;
+    private int receipt_id;
+    private int amount;
+    private String receipt_name;
 
     public ReceiptAndPays(int pays_id, String receipt_Date, double total, int item_id, int doctor_id, int ct_id, int receipt_id, int amount, String receipt_name) {
         this.pays_id = pays_id;

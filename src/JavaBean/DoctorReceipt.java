@@ -8,11 +8,11 @@ import java.util.function.DoubleToIntFunction;
  */
 public class DoctorReceipt {
 
-    Date receiptDate;
-    int receipt_id;
-    int num;
-    double amount;
-    int item_id;
+    private Date receiptDate;
+    private int receipt_id;
+    private int num;
+    private double amount;
+    private int item_id;
 
     public DoctorReceipt(Date receiptDate, int receipt_id, int num, double amount, int item_id) {
         this.receiptDate = receiptDate;

@@ -60,9 +60,40 @@
 
 <%DBConc dc = new DBConc();
   dc.logOut();
+  Boolean log = (Boolean)session.getAttribute("log");
+  if(log != null && !log){
+      %>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="open">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">请先登录</h4>
+            </div>
+            <div class="modal-body">
+                <p>请使用有正确权限的账号登录。</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+<%
+  }
 %>
 
-
+<div class="container">
+    <div class="jumbotron">
+        <h1>欢迎使用本系统！</h1>
+        <p>欢迎使用A医院管理系统，本系统提供简单的门诊收费管理以及住院管理功能。谢谢使用。</p>
+        <p><a class="btn btn-primary btn-lg" href="../Login.jsp">门诊收费管理子系统登录</a></p>
+        <p><a class="btn btn-primary btn-lg" href="../StayinLogin.jsp">住院管理子系统登录</a></p>
+    </div>
+</div>
 
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
@@ -80,6 +111,15 @@
 <script src="js/bootstrapValidator.min.js"></script>
 <script src="js/bootstrap-table.js"></script>
 <script src="js/bootbox.min.js"></script>
+<script>
+    $(function () {
+        $('#open').modal();
+    })
+</script>
+
+
+</body>
+</html>
 
 
 

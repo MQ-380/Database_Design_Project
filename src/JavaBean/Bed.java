@@ -7,11 +7,17 @@ public class Bed {
     private String id;
     private String bed_room;
     private String bed_no;
+    private Boolean bed_status;
 
-    public Bed(String id, String bed_room, String bed_no) {
+    public Bed(String id, String bed_room, String bed_no,Boolean bed_status) {
         this.id = id;
         this.bed_room = bed_room;
         this.bed_no = bed_no;
+        this.bed_status = bed_status;
+    }
+
+    public Boolean getBed_status() {
+        return bed_status;
     }
 
     public String getId() {

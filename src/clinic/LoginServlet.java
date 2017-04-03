@@ -15,7 +15,7 @@ import java.io.IOException;
 public class LoginServlet extends HttpServlet {
     public LoginServlet(){super();}
 
-    public void destory(){
+    public void destroy(){
         super.destroy();
     }
 
@@ -33,8 +33,9 @@ public class LoginServlet extends HttpServlet {
             String power = request.getParameter("power");
 
             DBConc conc =  new DBConc();
+            if(power == null) {response.sendRedirect("LoginFalse.jsp");}
             ret = conc.LoginCheck(username,passwd,power);
-            if(ret == true){
+            if(ret){
                 String[] info = conc.getInfo(username,power);
                 HttpSession hs = request.getSession();
                 hs.setAttribute("id",info[0]);

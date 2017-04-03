@@ -13,7 +13,7 @@ import java.io.IOException;
 public class RegisterAdminServlet extends HttpServlet{
     public RegisterAdminServlet(){super();}
 
-    public void destory(){
+    public void destroy(){
         super.destroy();
     }
 
@@ -39,7 +39,7 @@ public class RegisterAdminServlet extends HttpServlet{
                 ret = dc.RegisterAdminCheck(id,passwd,name,power);
                 HttpSession httpSession = request.getSession();
                 httpSession.setAttribute("type","0");
-                if(ret == true){
+                if(ret){
                     httpSession.setAttribute("registerSuccess",true);
                     httpSession.setAttribute("name",name);
                     response.sendRedirect("../Admin/registerSuccess.jsp");

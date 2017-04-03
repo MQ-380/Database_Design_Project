@@ -96,9 +96,14 @@
       </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 
-  </body>
-</html>
-
+  <div class="container">
+      <div class="jumbotron">
+          <h1>欢迎使用本系统！</h1>
+          <p>欢迎使用A医院管理系统，本系统提供简单的门诊收费管理以及住院管理功能。谢谢使用。</p>
+          <p><a class="btn btn-primary btn-lg" href="../Login.jsp">门诊收费管理子系统登录</a></p>
+          <p><a class="btn btn-primary btn-lg" href="../StayinLogin.jsp">住院管理子系统登录</a></p>
+      </div>
+  </div>
 
 
 
@@ -127,3 +132,6 @@
 </script>
 
 
+
+  </body>
+</html>

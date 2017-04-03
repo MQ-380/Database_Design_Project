@@ -27,6 +27,7 @@ public class StayLoginServlet extends HttpServlet {
             String passwd = request.getParameter("passwd");
             String power = request.getParameter("power");
 
+            if(power == null) {response.sendRedirect("LoginFalse.jsp");}
             DBConc dc = new DBConc();
             if(dc.StayLoginCheck(username,passwd,power)){
                 if(power.equals("0")) response.sendRedirect("../Stay/StayAdmin.jsp");
@@ -36,7 +37,7 @@ public class StayLoginServlet extends HttpServlet {
             }
 
         }catch (Exception e){
-
+            e.printStackTrace();
         }
     }
 }

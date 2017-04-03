@@ -13,7 +13,7 @@ import java.io.IOException;
 public class DeleteStayRoomServlet extends HttpServlet {
     public DeleteStayRoomServlet(){super();}
 
-    public void destory(){super.destroy();}
+    public void destroy(){super.destroy();}
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException,ServletException{
         doPost(request,response);

@@ -5,12 +5,12 @@ import java.util.*;
  */
 public class CTReceipt {
 
-    Date pays_date;
-    int item_id;
-    int receipt_id;
-    int num;
-    double amount;
-    int doctor_id;
+    private Date pays_date;
+    private int item_id;
+    private int receipt_id;
+    private int num;
+    private double amount;
+    private int doctor_id;
 
     public CTReceipt(Date pays_date, int item_id, int receipt_id, int num, double amount, int doctor_id) {
         this.pays_date = pays_date;

@@ -16,7 +16,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>管理药品和检查数据</title>
+    <title>编辑床位</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 

@@ -16,7 +16,7 @@ import java.util.*;
 public class UpdateDoctorInformationServlet extends HttpServlet {
     public UpdateDoctorInformationServlet(){super();}
 
-    public void destory(){super.destroy();}
+    public void destroy(){super.destroy();}
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try{

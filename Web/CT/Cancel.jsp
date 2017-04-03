@@ -231,7 +231,7 @@
                    var itemPaysId = $("#pays" + itemNo).text();
                    var checked = {
                        id: itemPaysId
-                   }
+                   };
                    totalToCancel += Number($('#total' + itemNo).text());
                    checkedIds.push(checked);
                }

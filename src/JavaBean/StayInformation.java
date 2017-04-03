@@ -1,14 +1,16 @@
 package JavaBean;
 
+import java.util.ArrayList;
+
 /**
  * Created by mouizumi on 2017/3/29.
  */
 public class StayInformation {
-    int inpatient_id;
-    int resident_id;
-    String inpatient_name;
-    int bed_id;
-    int stay_id;
+    private int inpatient_id;
+    private int resident_id;
+    private String inpatient_name;
+    private int bed_id;
+    private int stay_id;
 
     public StayInformation(int inpatient_id, int resident_id, String inpatient_name, int bed_id, int stay_id) {
         this.inpatient_id = inpatient_id;
@@ -16,6 +18,9 @@ public class StayInformation {
         this.inpatient_name = inpatient_name;
         this.bed_id = bed_id;
         this.stay_id = stay_id;
+    }
+
+    public StayInformation() {
     }
 
     public int getInpatient_id() {
@@ -37,4 +42,5 @@ public class StayInformation {
     public int getStay_id() {
         return stay_id;
     }
+
 }

@@ -70,6 +70,15 @@
         </div><!--/.container -->
     </nav>
 </header>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>住院管理子系统   管理员账户</h1>
+        <p>本部分可以进行注册管理员账户，医生账户，查询住院情况，管理基础数据以及床位添加等功能。</p>
+        <p>具体功能见上方导航栏。</p>
+    </div>
+</div>
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="../js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
 

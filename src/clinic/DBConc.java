@@ -15,8 +15,9 @@ public class DBConc {
     private static String loginPower = null;
     private static String nowCTUserId = "-1";
     private static String nowResidentId = "-1";
+    private int n;
 
-    public static Connection getConn(){
+    private static Connection getConn(){
         try{
             String url = "jdbc:mysql://localhost:3306/hospital?characterEncoding=utf-8";
             Class.forName("com.mysql.jdbc.Driver");
@@ -29,7 +30,7 @@ public class DBConc {
     }
 
 
-    public void closeConnection(){
+    private void closeConnection(){
         try{
             conc.close();
         }catch(Exception e){
@@ -98,8 +99,7 @@ public class DBConc {
     }
 
     public Boolean checkLoginAs(String power){
-        if(power.equals(loginPower)) return true;
-        else return false;
+        return power.equals(loginPower);
     }
 
 
@@ -108,6 +108,7 @@ public class DBConc {
        String[] info = getInfo(nowCTUserId,"1");
        return info[1];
     }
+
 
     public String getNowCTID(){
         Connection conn;
@@ -187,14 +188,9 @@ public class DBConc {
             pstat.setString(3,username);
             pstat.setString(4,name);
 
-            int n = 0;
-            n = pstat.executeUpdate();
+            int n = pstat.executeUpdate();
 
-            if(n>0){
-                return true;
-            }else{
-                return false;
-            }
+            return n>0;
 
         }catch(Exception e){
             e.printStackTrace();
@@ -220,15 +216,9 @@ public class DBConc {
             pstat.setString(3,power);
             pstat.setString(4,name);
 
-            int n = 0;
-            n = pstat.executeUpdate();
-
-            if(n>0){
-                return true;
-            }else{
-                return false;
-            }
-
+            int n =  pstat.executeUpdate();
+            
+            return n>0;
         }catch(Exception e){
             e.printStackTrace();
             return false;
@@ -254,14 +244,9 @@ public class DBConc {
             pstat.setString(4,resident_name);
             pstat.setInt(5,room_id);
 
-            int n = 0;
-            n = pstat.executeUpdate();
+            int n =  pstat.executeUpdate();
 
-            if(n>0){
-                return true;
-            }else{
-                return false;
-            }
+            return n>0;
 
         }catch(Exception e){
             e.printStackTrace();
@@ -288,6 +273,29 @@ public class DBConc {
             }
 
            return newId;
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return 1;
+        }
+    }
+
+    public int GetNewPrescriptionId(){
+        Connection conc;
+        PreparedStatement pstat;
+        DBConc cc = new DBConc();
+        conc = cc.getConn();
+
+        try{
+            Statement stat = conc.createStatement();
+            int newId = 1;
+            String sql = "select DISTINCT prescription_id from prescriptions ";
+            ResultSet rs = stat.executeQuery(sql);
+            while(rs.next()){
+                newId = Integer.valueOf(rs.getString("prescription_id"))+1;
+            }
+
+            return newId;
 
         }catch (Exception e){
             e.printStackTrace();
@@ -576,16 +584,20 @@ public class DBConc {
                 sql = "select * from inpatient where resident_id =" + id;
             }else if(type.equals("room")){
                 sql = "select * from inpatient where bed_id in (SELECT  bed_id from bed where bed_room="+id+")";
+            }else if(type.equals("stay")){
+                sql = "SELECT * from inpatient where stay_id ="+id;
+            }else if(type.equals("bed")){
+                sql = "select * from inpatient where bed_id =" + id;
             }
             ResultSet rs = stat.executeQuery(sql);
             ArrayList<StayInformation> stayInformations   = new ArrayList<>();
             while (rs.next()) {
-                int inpaitent_id = rs.getInt("inpatient_id");
+                int inpatient_id = rs.getInt("inpatient_id");
                 int resident_id = rs.getInt("resident_id");
                 String inpatient_name = rs.getString("inpatient_name");
                 int bed_id = rs.getInt("bed_id");
                 int stay_id = rs.getInt("stay_id");
-                StayInformation stayInformation = new StayInformation(inpaitent_id,resident_id,inpatient_name,bed_id,stay_id);
+                StayInformation stayInformation = new StayInformation(inpatient_id,resident_id,inpatient_name,bed_id,stay_id);
                 stayInformations.add(stayInformation);
             }
             return stayInformations;
@@ -600,7 +612,9 @@ public class DBConc {
 
 
 
-    public String getReceiptName(int receipt_id){
+
+
+    private String getReceiptName(int receipt_id){
         Connection conn;
         DBConc dc = new DBConc();
         conn = dc.getConn();
@@ -712,6 +726,30 @@ public class DBConc {
         }catch(Exception e){
             e.printStackTrace();
             return new HashMap<>();
+        }finally {
+            dc.closeConnection();
+        }
+    }
+
+    public ArrayList<String> getNowResident(){
+        Connection conn;
+        DBConc dc = new DBConc();
+        conn = dc.getConn();
+
+        try{
+            Statement stat = conn.createStatement();
+            String sql;
+            sql = "select resident_name,id from resident where username='"+nowResidentId+"';";
+            ResultSet rs = stat.executeQuery(sql);
+            ArrayList<String> info = new ArrayList<>();
+            if(rs.next()){
+                info.add(rs.getString("resident_name"));
+                info.add(String.valueOf(rs.getInt("id")));
+            }
+            return info;
+        }catch(Exception e){
+            e.printStackTrace();
+            return new ArrayList<>();
         }finally {
             dc.closeConnection();
         }
@@ -841,7 +879,29 @@ public class DBConc {
         }
     }
 
+    public Map<String,String> getAllInpatient(){
+        Connection conn;
+        DBConc dc = new DBConc();
+        conn = dc.getConn();
 
+        try{
+            Statement stat = conn.createStatement();
+            String sql = "select stay_id,inpatient_name from inpatient";
+            ResultSet rs = stat.executeQuery(sql);
+            Map<String,String> inpatients = new HashMap<>();
+            while(rs.next()){
+                String id = String.valueOf(rs.getInt("stay_id"));
+                String name = rs.getString("inpatient_name");
+                inpatients.put(id,name);
+            }
+            return inpatients;
+        }catch (Exception e){
+            e.printStackTrace();
+            return new HashMap<>();
+        }finally {
+            dc.closeConnection();
+        }
+    }
 
 
     public ArrayList<BedRoom> getAllBedNumberOfRoom(){
@@ -869,6 +929,84 @@ public class DBConc {
         }
     }
 
+
+    public ArrayList<Bed> getSelectedBed(boolean isOccupied){
+        Connection conn;
+        DBConc dc = new DBConc();
+        conn = dc.getConn();
+
+        try{
+            Statement stat = conn.createStatement();
+            String sql = "select * from bed where status="+isOccupied;
+            ResultSet rs = stat.executeQuery(sql);
+            ArrayList<Bed> beds = new ArrayList<>();
+            while(rs.next()){
+                String bed_id = String.valueOf(rs.getInt("bed_id"));
+                String bed_room = String.valueOf(rs.getInt("bed_room"));
+                String bed_no = String.valueOf(rs.getInt("bed_no"));
+                Bed bed = new Bed(bed_id,bed_room,bed_no,true);
+                beds.add(bed);
+            }
+            return beds;
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ArrayList<>();
+        }finally {
+            dc.closeConnection();
+        }
+    }
+
+
+    public int getBedId(String room,String bed){
+        Connection conn;
+        DBConc dc = new DBConc();
+        conn = dc.getConn();
+
+        try{
+            Statement statement = conn.createStatement();
+            String sql = "select bed_id from bed where bed_room="+room+" AND bed_no="+bed+";";
+            ResultSet rs = statement.executeQuery(sql);
+            if(rs.next()){
+                return rs.getInt("bed_id");
+            }
+            return -1;
+        }catch (Exception e){
+            e.printStackTrace();
+            return -1;
+        }finally {
+            dc.closeConnection();
+        }
+    }
+
+
+    public ArrayList<PrescriptionsInformation> getPrescription(int stay_id){
+        Connection conn;
+        DBConc dc = new DBConc();
+        conn = dc.getConn();
+
+        try{
+            Statement stat = conn.createStatement();
+            String sql = "SELECT * from prescriptions where stay_id="+stay_id;
+            ResultSet rs = stat.executeQuery(sql);
+            ArrayList<PrescriptionsInformation> prescriptionsInformations = new ArrayList<>();
+            while(rs.next()){
+                int resident_id = rs.getInt("resident_id");
+                int prescription_id = rs.getInt("prescription_id");
+                int item_id = rs.getInt("item_id");
+                int item_count = rs.getInt("item_count");
+                double item_total = rs.getDouble("item_total");
+                PrescriptionsInformation prescriptionsInformation = new PrescriptionsInformation(resident_id,prescription_id,stay_id,item_id,item_count,item_total);
+                prescriptionsInformations.add(prescriptionsInformation);
+            }
+            return prescriptionsInformations;
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ArrayList<>();
+        }finally {
+            dc.closeConnection();
+        }
+
+    }
 
 
     public int getStayRoomCapacity(int room_id){
@@ -907,20 +1045,37 @@ public class DBConc {
             preparedStatement.setString(2,name);
             preparedStatement.setInt(3,room);
             preparedStatement.setString(4,degree);
-            int n = 0;
-            n = preparedStatement.executeUpdate();
+            int n = preparedStatement.executeUpdate();
 
-            if(n>0){
-                return true;
-            }else{
-                return false;
-            }
+            return n>0;
         }catch (Exception e) {
             e.printStackTrace();
             return false;
         }
     }
 
+    public Boolean addInpatient(int inpatient_id,int resident_id,String inpatient_name,int bed_id,int stay_id){
+        Connection conn;
+        DBConc dc = new DBConc();
+        conn = dc.getConn();
+        PreparedStatement preparedStatement;
+
+        try{
+
+            String sql = "insert into inpatient(inpatient_id, resident_id, inpatient_name, bed_id, stay_id)  value(?,?,?,?,?)";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1,inpatient_id);
+            preparedStatement.setInt(2,resident_id);
+            preparedStatement.setString(3,inpatient_name);
+            preparedStatement.setInt(4,bed_id);
+            preparedStatement.setInt(5,stay_id);
+            int n = preparedStatement.executeUpdate();
+            return n>0;
+        }catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 
 
@@ -940,11 +1095,7 @@ public class DBConc {
 
             int n = preparedStatement.executeUpdate();
 
-            if(n>0){
-                return true;
-            }else{
-                return false;
-            }
+            return n>0;
         }catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -966,11 +1117,7 @@ public class DBConc {
 
             int n = preparedStatement.executeUpdate();
 
-            if(n>0){
-                return true;
-            }else{
-                return false;
-            }
+            return n>0;
         }catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -988,19 +1135,15 @@ public class DBConc {
             int newId = dc.GetNewId("bed","bed_id");
             for(int i=0;i<number;i++){
                 if(i!=0) sqlBuffer.append(",");
-                sqlBuffer.append("('"+(newId+i)+"','"+id+"','"+(oldCapacity+i+1)+"')");
+                sqlBuffer.append("('"+(newId+i)+"','"+id+"','"+(oldCapacity+i+1)+"','0')");
             }
 
-            String sql = "insert into bed(bed_id, bed_room, bed_no)  value "+ sqlBuffer.toString();
+            String sql = "insert into bed(bed_id, bed_room, bed_no,status)  value "+ sqlBuffer.toString();
             preparedStatement = conn.prepareStatement(sql);
 
             int n = preparedStatement.executeUpdate();
 
-            if(n>0){
-                return true;
-            }else{
-                return false;
-            }
+            return n>0;
         }catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -1021,11 +1164,7 @@ public class DBConc {
             preparedStatement.setString(3,receipt_name);
 
             int n = preparedStatement.executeUpdate();
-            if(n>0){
-                return true;
-            }else{
-                return false;
-            }
+            return n>0;
         }catch (Exception e){
             e.printStackTrace();
             return false;
@@ -1051,14 +1190,52 @@ public class DBConc {
             preparedStatement.setInt(8,amount);
 
             int n = preparedStatement.executeUpdate();
-            if(n>0){
-                return true;
-            }else{
-                return false;
-            }
+            return n>0;
         }catch (Exception e){
             e.printStackTrace();
             return false;
+        }
+    }
+
+
+    public Boolean addPrescription(int resident_id,int prescription_id,int stay_id,int item_id,int item_count,double item_total){
+        Connection conn;
+        DBConc dc = new DBConc();
+        conn = dc.getConn();
+        PreparedStatement preparedStatement;
+
+        try{
+            String sql = "insert into prescriptions(resident_id,prescription_id,stay_id,item_id,item_count,item_total) value(?,?,?,?,?,?)";
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.setInt(1,resident_id);
+            preparedStatement.setInt(2,prescription_id);
+            preparedStatement.setInt(3,stay_id);
+            preparedStatement.setInt(4,item_id);
+            preparedStatement.setInt(5,item_count);
+            preparedStatement.setDouble(6,item_total);
+
+            int n = preparedStatement.executeUpdate();
+            return n>0;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public void ChangeBedStatus(Boolean newStatus,String bed_id){
+        Connection conn;
+        DBConc dc = new DBConc();
+        conn = dc.getConn();
+        PreparedStatement preparedStatement;
+
+        try{
+            String sql = "update bed set status="+newStatus+" where bed_id="+bed_id;
+            preparedStatement = conn.prepareStatement(sql);
+            preparedStatement.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            dc.closeConnection();
         }
     }
 
@@ -1084,11 +1261,7 @@ public class DBConc {
             int n=0;
             n = preparedStatement.executeUpdate();
 
-            if(n>0){
-                return true;
-            }else{
-                return false;
-            }
+            return n>0;
         }catch (Exception e){
             e.printStackTrace();
             return false;
@@ -1119,11 +1292,7 @@ public class DBConc {
             int n=0;
             n = preparedStatement.executeUpdate();
 
-            if(n>0){
-                return true;
-            }else{
-                return false;
-            }
+            return n>0;
         }catch (Exception e){
             e.printStackTrace();
             return false;
@@ -1154,11 +1323,7 @@ public class DBConc {
             int n=0;
             n = preparedStatement.executeUpdate();
 
-            if(n>0){
-                return true;
-            }else{
-                return false;
-            }
+            return n>0;
         }catch (Exception e){
             e.printStackTrace();
             return false;
@@ -1187,15 +1352,15 @@ public class DBConc {
                 sql = "delete from receipt where receipt_id=" + toDelete;
             }else if(form.equals("bed")){
                 sql = "delete from bed where bed_room=" + toDelete;
+            }else if(form.equals("prescriptions")){
+                sql = "delete from prescriptions where stay_id="+ toDelete;
+            }else if(form.equals("inpatient")){
+                sql = "delete from inpatient where stay_id="+ toDelete;
             }
             preparedStatement = conn.prepareStatement(sql);
             int n = 0;
             n = preparedStatement.executeUpdate();
-            if(n>0){
-                return true;
-            }else{
-                return false;
-            }
+            return n>0;
         }catch (Exception e){
             e.printStackTrace();
             return false;
@@ -1249,11 +1414,7 @@ public class DBConc {
             preparedStatement = conn.prepareStatement(sql);
             int n = 0;
             n = preparedStatement.executeUpdate();
-            if(n>0){
-                return true;
-            }else{
-                return false;
-            }
+            return n>0;
 
         }catch (Exception e){
             e.printStackTrace();
@@ -1271,11 +1432,8 @@ public class DBConc {
             Statement stat = conn.createStatement();
             String sql="select pays_id from pays where receipt_id="+receipt_id;
             ResultSet rs = stat.executeQuery(sql);
-            if(rs.next()){
-                return true;
-            }else{
-                return false;
-            }
+            return rs.next();
+
         }catch (Exception e){
             e.printStackTrace();
             return false;

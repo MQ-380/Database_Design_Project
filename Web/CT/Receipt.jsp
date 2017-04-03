@@ -369,7 +369,7 @@ ArrayList<Item> items = dc.getAllItems();
                    $('#back').modal();
                }
            });
-       })
+       });
 
         $('#give').bind('input',function(){
             var total = $('#totalPriceBack').val();

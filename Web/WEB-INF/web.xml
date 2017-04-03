@@ -145,6 +145,45 @@
         <servlet-class>clinic.ConsultRoomInpatientServlet</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>ConsultInpatientInformationServlet</servlet-name>
+        <servlet-class>clinic.ConsultInpatientInformationServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>AddNewPrescription</servlet-name>
+        <servlet-class>clinic.AddNewPrescription</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>InpatientCheckOutServlet</servlet-name>
+        <servlet-class>clinic.InpatientCheckOutServlet</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>AddInpatientServlet</servlet-name>
+        <servlet-class>clinic.AddInpatientServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>AddInpatientServlet</servlet-name>
+        <url-pattern>/AddInpatientServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>InpatientCheckOutServlet</servlet-name>
+        <url-pattern>/InpatientCheckOutServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>AddNewPrescription</servlet-name>
+        <url-pattern>/AddNewPrescription</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConsultInpatientInformationServlet</servlet-name>
+        <url-pattern>/ConsultInpatientInformationServlet</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>ConsultRoomInpatientServlet</servlet-name>
         <url-pattern>/ConsultRoomInpatientServlet</url-pattern>

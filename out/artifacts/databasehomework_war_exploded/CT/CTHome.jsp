@@ -64,7 +64,13 @@
     </nav>
 </header>
 
-
+<div class="container">
+    <div class="jumbotron">
+        <h1>门诊管理子系统   收费员账户</h1>
+        <p>本部分可以进行收费、退费、查询等功能。</p>
+        <p>具体功能见上方导航栏。</p>
+    </div>
+</div>
 
 
 

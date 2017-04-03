@@ -14,7 +14,7 @@ public class RegisterResidentServlet extends HttpServlet{
 
     public RegisterResidentServlet(){super();}
 
-    public void destory(){
+    public void destroy(){
         super.destroy();
     }
 

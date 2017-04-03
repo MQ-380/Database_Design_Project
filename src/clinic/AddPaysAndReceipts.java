@@ -15,7 +15,7 @@ public class AddPaysAndReceipts extends HttpServlet{
 
     public AddPaysAndReceipts(){super();}
 
-    public void destory(){super.destroy();}
+    public void destroy(){super.destroy();}
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);

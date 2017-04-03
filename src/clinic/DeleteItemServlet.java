@@ -13,7 +13,7 @@ import java.io.IOException;
 public class DeleteItemServlet extends HttpServlet{
     public DeleteItemServlet(){super();}
 
-    public void destory(){super.destroy();}
+    public void destroy(){super.destroy();}
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
         doPost(request,response);

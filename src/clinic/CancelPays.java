@@ -19,7 +19,7 @@ public class CancelPays extends HttpServlet {
 
     public CancelPays(){super();}
 
-    public void destory(){super.destroy();}
+    public void destroy(){super.destroy();}
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException{
         doPost(request,response);

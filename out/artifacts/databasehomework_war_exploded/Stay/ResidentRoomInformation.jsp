@@ -84,7 +84,6 @@
     <div class="container">
         <form class="form-inline" action="../ConsultRoomInpatientServlet" method="post">
             <div class="form-group">
-
                 <label for="DoctorID">病房号</label>
                 <select class="form-control" id="DoctorID" name="roomId">
                     <%DBConc db = new DBConc();
