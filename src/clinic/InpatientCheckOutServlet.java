@@ -26,8 +26,9 @@ public class InpatientCheckOutServlet extends HttpServlet {
             DBConc dc  =  new DBConc();
 
             if(dc.delete(stay_id,"prescriptions") || dc.getPrescription(Integer.parseInt(stay_id)).size()==0){
+                String bed_id = String.valueOf(dc.getInpatient("stay",stay_id).get(0).getBed_id());
                 if(dc.delete(stay_id,"inpatient")){
-                    dc.ChangeBedStatus(false,String.valueOf(dc.getInpatient("stay",stay_id).get(0).getBed_id()));
+                    dc.ChangeBedStatus(false,bed_id);
                     response.setContentType("text/plain");
                     response.setCharacterEncoding("UTF-8");
                     response.getWriter().write("true");
